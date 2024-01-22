@@ -1,8 +1,7 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Damion', cursive;
-    font-family: 'Poppins', sans-serif;
+    font-family: "VK Sans Display Regular";
     color: #003288;
 }
 body {
@@ -27,28 +26,29 @@ input::-webkit-inner-spin-button {
     justify-content: center;
 }
 .kpi input , .plan input {
-    opacity: 0.9;
-    background: linear-gradient(90deg, #b9deed, #efefef);
+    background: rgb(171, 171, 171);
     height: 30px;
     width: 200px;
     text-align: center;
     margin: 15px 10px;
-    border: 1px solid #003CC5; 
-    border-radius: 5px; 
-    color: #031088; 
+    border: none;
+    border-radius: 10px; 
+    color: #000000; 
+    font-weight: bold;
     padding: 10px; 
     outline: none; 
-    transition: all 0.6s;
+    transition: all 0.3s;
 }
 
 /* Стиль для hover-эффекта (при наведении) */
-.kpi input:hover {
-    border-color: #0B63F6; /* Изменяем цвет рамки при наведении */
+.kpi input:hover, .plan input:hover {
+    background: rgb(192, 192, 192);
 }
 
 /* Стиль для фокуса (когда input активен) */
-.kpi input:focus {
-    box-shadow: 0 0 5px rgba(0, 60, 197, 0.7); /* Добавляем тень при фокусе */
+.kpi input:focus, .plan input:focus {
+    scale: 1.05;
+    box-shadow: 0 0 5px rgba(65, 65, 65, 0.7); /* Добавляем тень при фокусе */
 }
 .input_wrapper {
     display: flex;
@@ -89,13 +89,30 @@ input::-webkit-inner-spin-button {
 #root, .title {
     text-align: center;
     border-radius: 5px;
+    background-image: linear-gradient(to right, #003CC5 0%, #0B63F6 51%, #003CC5 100%);
+    font-weight: bold;
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientAnimation 1.5s linear infinite;
+    background-size: 200% auto;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 100% 0%;
+    }
+    100% {
+        background-position: -100% 0%;
+    }
 }
 .title_big {            
     margin: 0 auto;
     text-align: center;
     border-radius: 3px;
     width: 100px;
-    border: 1px solid;
+    height: 25px;
+    line-height: 25px;
     background-image: linear-gradient(to right, #003CC5 0%, #0B63F6 51%, #003CC5 100%);
     color:#b9deed;
     background-size: 200% auto;
@@ -125,7 +142,8 @@ input::-webkit-inner-spin-button {
     content: "";
     height: 32px; /* высота кнопки */
     width: 32px; /* ширина кнопки */
-    background: #fff; /* цвет кнопки */
+    background: url(VK\ Logo.svg);
+    background-size: contain; 
     border-radius: 17px;
     top: 3px; /* положение кнопки по вертикали относительно основы */
     left: 3px; /* положение кнопки по горизонтали относительно основы */
@@ -134,7 +152,7 @@ input::-webkit-inner-spin-button {
     z-index: 1;
   }
   .switch-on {
-    background: #118c4e;
+    background: #0077ffbc;
   }
   .switch-on::after {
     left: 37px;
