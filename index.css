@@ -80,10 +80,10 @@ input::-webkit-inner-spin-button {
     margin-top: 20px;
     text-align: center;
     width: 120px;
-    height: 60px;
+    height: 40px;
     border: 1px solid;
     font-size: 15px;
-    line-height: 60px;
+    line-height: 40px;
     border-radius: 5px;
 }
 #root, .title {

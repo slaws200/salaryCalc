@@ -61,16 +61,23 @@ function calcOutflowSalary(tarifvalue, bonusvalue) {
         }
         if (interval / inter <= 0.5) {
             marker += 1;
-        } else if (interval / inter > 0.8 && interval / inter < 1) {
-            marker += 0.2;
-        } else if (interval / inter > 0.7 && interval / inter <= 0.8) {
-            marker += 0.4;
-        } else if (interval / inter > 0.6 && interval / inter <= 0.7) {
-            marker += 0.6;
-        } else if (interval / inter > 0.5 && interval / inter <= 0.6) {
-            marker += 0.8;
         } else {
-            marker += 0;
+            switch(true) {
+                case interval / inter <= 0.6:
+                    marker += 0.8;
+                    break;
+                case interval / inter <= 0.7:
+                    marker += 0.6;
+                    break;
+                case interval / inter <= 0.8:
+                    marker += 0.4;
+                    break;
+                case interval / inter <= 1:
+                    marker += 0.2;
+                    break;
+                default:
+                    marker += 0;
+            }
         }
 
         bonus = (bonus * planPercent / 5 * marker) > bonus ? bonus : (bonus * planPercent / 5 * marker) ;
@@ -78,24 +85,22 @@ function calcOutflowSalary(tarifvalue, bonusvalue) {
         document.getElementById('root').textContent = ` ${salary.toFixed(2)} р.`
     }
 }
-// calculate.addEventListener('click', calcOutflowSalary);
 
-function pmpOrRf(){
-    const toogler = document.querySelector('.switch-btn');
-    calculate.addEventListener('click', () => {
-        calcOutflowSalary(14.88, 2500);
-    });
+function pmpOrRf() {
+    const toogler = document.querySelector('.switch-btn');    
+
+    const calcOutflowSalaryHandler = () => {
+        const rate = toogler.classList.contains('switch-on') ? 136.9 : 14.88;
+        const amount = toogler.classList.contains('switch-on') ? 7000 : 2500;
+        calcOutflowSalary(rate, amount);
+    };
+
+    calculate.addEventListener('click', calcOutflowSalaryHandler);
+
     toogler.addEventListener('click', () => {
-        toogler.classList.toggle('switch-on');        
-        if(toogler.classList.contains('switch-on')) {
-            calculate.addEventListener('click', () => {
-                calcOutflowSalary(136.9 , 7000);
-            });
-        } else if(!toogler.classList.contains('switch-on')){
-            calculate.addEventListener('click', () => {
-                calcOutflowSalary(14.88 , 2500);
-            });
-        }
+        toogler.classList.toggle('switch-on');
+        calcOutflowSalaryHandler();
     });
 }
+
 pmpOrRf();
