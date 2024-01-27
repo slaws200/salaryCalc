@@ -8,9 +8,8 @@ function calcOutflowSalary(tarifvalue, bonusvalue) {
     const hours = parseFloat((document.querySelector('.hours').value).replace(',', '.')),
         conversion = parseFloat((document.querySelector('.conversion').value).replace(',', '.')),
         interval = parseFloat((document.querySelector('.interval').value).replace(',', '.')),
-        quality = parseFloat((document.querySelector('.quality').value).replace(',', '.'));            
-    let tarif = tarifvalue;
-    const bet = tarif * hours;
+        quality = parseFloat((document.querySelector('.quality').value).replace(',', '.'));
+    const bet = tarifvalue * hours;
     let bonus = bonusvalue;
     const conv = parseFloat((document.querySelector('.conversionPlan').value).replace(',', '.'));
     const qual = parseFloat((document.querySelector('.qualityPlan').value).replace(',', '.'));
