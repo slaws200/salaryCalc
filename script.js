@@ -89,7 +89,7 @@ function pmpOrRf() {
     const toogler = document.querySelector('.switch-btn');    
 
     const calcOutflowSalaryHandler = () => {
-        const rate = toogler.classList.contains('switch-on') ? 136.9 : 14.88;
+        const rate = toogler.classList.contains('switch-on') ? 154.76 : 14.88;
         const amount = toogler.classList.contains('switch-on') ? 7000 : 2500;
         calcOutflowSalary(rate, amount);
     };
